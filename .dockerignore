@@ -1,0 +1,31 @@
+# Django
+.DS_Store
+.dockerignore
+.git/
+.gitignore
+README.rst
+*.md
+!README.md
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media
+*.py[cod]
+*$py.class
+
+# JetBrains+all Patch
+# Ignores the whole .idea folder and all .iml files
+# See https://github.com/joeblau/gitignore.io/issues/186 and https://github.com/joeblau/gitignore.io/issues/360
+
+.idea/
+
+# Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-249601023
+
+*.iml
+modules.xml
+.idea/misc.xml
+*.ipr
