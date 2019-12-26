@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  db:
+    image: redis
+    expose:
+        - 6379
+  web:
+    build:  .
+    image: asifadocker/telenortest
+    volumes:
+        - .:/code
+    ports:
+        - "8000:8000"
+    depends_on:
+        - db
+    command: python manage.py runserver 0.0.0.0:8000

@@ -1,0 +1,9 @@
+asgiref==3.2.3
+certifi==2019.11.28
+Django==3.0.1
+djangorestframework==3.11.0
+mysqlclient==1.4.6
+pytz==2019.3
+redis==3.3.11
+sqlparse==0.3.0
+wincertstore==0.2
