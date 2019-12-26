@@ -25,7 +25,7 @@ SECRET_KEY = '-b_h19oiipko@v^e$tz^y5c!(z_#a%)o9tkb4*c9*#7%f&^m61'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -82,7 +82,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -104,6 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
 #Redis configurations
 REDIS_HOST = 'db'
 REDIS_PORT = 6379
+TTL = 5*60
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/

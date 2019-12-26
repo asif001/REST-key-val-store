@@ -1,7 +1,9 @@
 asgiref==3.2.3
 certifi==2019.11.28
 Django==3.0.1
+django-redis==4.11.0
 djangorestframework==3.11.0
+msgpack==0.6.2
 mysqlclient==1.4.6
 pytz==2019.3
 redis==3.3.11
