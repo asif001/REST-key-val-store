@@ -32,10 +32,9 @@ def manage_items(request, *args, **kwargs):
             set_of_all_keys = set(all_keys)
 
             key_list = request.GET.keys()   # Get keys to be queried
-            print(key_list)
 
             if len(key_list) > 1:                    # KeyList contains more than one keys so exception
-                raise Exception('KeyExceeded', key_list)
+                raise Exception('KeyExceeded', 0)
 
             if len(key_list) == 1:
 
@@ -57,15 +56,17 @@ def manage_items(request, *args, **kwargs):
                             value = redis_instance.get(key)
                             items[key] = value
                             redis_instance.setex(key, cache_ttl, value)
-                        response = items
+                        items = list(items.items())
+                        items.sort()
+                        response = dict(items)
                         status_code = status.HTTP_200_OK
 
                     else:
                         error_keys = list(set_of_keys.difference(set_of_keys.intersection(set_of_all_keys)))
-                        raise Exception('KeyNotFound', error_keys)
+                        raise Exception('KeyNotFound', 0)
 
                 else:
-                    raise Exception('InvalidKey', list(key_list)[0])
+                    raise Exception('InvalidKey', 0)
 
             else:
                 items = {}
@@ -73,7 +74,9 @@ def manage_items(request, *args, **kwargs):
                     value = redis_instance.get(key)
                     items[key.decode("utf-8")] = value
                     redis_instance.setex(key, cache_ttl, value)
-                response = items
+                items = list(items.items())
+                items.sort()
+                response = dict(items)
                 status_code = status.HTTP_200_OK
 
         # Handling POST Request #
@@ -87,9 +90,8 @@ def manage_items(request, *args, **kwargs):
             item = json.loads(request.body)  # Load from key:value from json
             keys = list(item.keys())
             duplicate_keys = list(set(keys).intersection(set_of_all_keys))
-
             if len(duplicate_keys) > 0:
-                raise Exception("DuplicateKey", duplicate_keys)
+                raise Exception("DuplicateKey", 0)
             else:
                 for key in keys:
                     redis_instance.set(key, item[key], ex=cache_ttl)
@@ -114,7 +116,7 @@ def manage_items(request, *args, **kwargs):
             error_keys = list(set_of_keys.difference(set_of_keys.intersection(set_of_all_keys)))
 
             if len(error_keys) > 0:
-                raise Exception('KeyNotFound', error_keys)
+                raise Exception('KeyNotFound', 0)
             else:
                 for key in keys:
                     redis_instance.set(key, item[key], ex=cache_ttl)
@@ -155,7 +157,7 @@ def manage_items(request, *args, **kwargs):
         status_code = status.HTTP_404_NOT_FOUND
 
     except Exception as inst:
-        exception_name, parameters = inst.args
+        exception_name, param = inst.args
         if exception_name == 'KeyExceeded':
             response = {
                 "success": f"False",
