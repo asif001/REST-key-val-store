@@ -190,7 +190,8 @@ def manage_items(request, *args, **kwargs):
                 "success": f"False",
                 "error": f"Conflict",
                 "code": 409,
-                "detail": f"Can not create new resource - already exist."
+                "detail": f"Can not create new resource - already exist.",
+                "path": "/api/values"
             }
             status_code = status.HTTP_409_CONFLICT
 
