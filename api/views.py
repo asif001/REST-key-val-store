@@ -1,4 +1,5 @@
 import json
+import msgpack
 from django.conf import settings
 import redis
 from rest_framework.decorators import api_view
@@ -93,7 +94,9 @@ def manage_items(request, *args, **kwargs):
                 for key in keys:
                     redis_instance.set(key, item[key], ex=cache_ttl)
                 response = {
-                    'msg': f"Successfully set the values"
+                    "success": f"True",
+                    "code": 201,
+                    "detail": f"Successfully set the values."
                 }
                 status_code = status.HTTP_201_CREATED
 
@@ -116,53 +119,76 @@ def manage_items(request, *args, **kwargs):
                 for key in keys:
                     redis_instance.set(key, item[key], ex=cache_ttl)
                 response = {
-                    'msg': f"Successfully updated the values"
+                    "success": f"True",
+                    "code": 204,
+                    'detail': f"Successfully updated the values."
                 }
                 status_code = status.HTTP_204_NO_CONTENT
 
     except TypeError:
         response = {
-            'msg': f"Type Error in json.loads(). Must be string"
+            "success": f"False",
+            "error": f"Not Found",
+            "code": 404,
+            "detail'": f"Type Error in json.loads(). Must be string"
         }
-        status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+        status_code = status.HTTP_404_NOT_FOUND
 
     except json.decoder.JSONDecodeError:
         response = {
-            'msg': f"Error in json format"
+            "success": f"False",
+            'error': f"Bad Request",
+            "code": 400,
+            "detail": f"Error in JSON format"
         }
 
-        status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+        status_code = status.HTTP_400_BAD_REQUEST
 
     except redis.RedisError:
         response = {
-            'msg': f"Error reading from or writing to the memory"
+            "success": f"False",
+            "error": f"Not Found",
+            "code": 404,
+            "detail": f"Error retrieving or saving data"
         }
 
-        status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+        status_code = status.HTTP_404_NOT_FOUND
 
     except Exception as inst:
         exception_name, parameters = inst.args
         if exception_name == 'KeyExceeded':
             response = {
-                'msg': f"Too many keys in url - {parameters}"
+                "success": f"False",
+                "error": f"Bad Request",
+                "code": 400,
+                "detail": f"Too many keys."
             }
-            status_code = status.HTTP_404_NOT_FOUND
+            status_code = status.HTTP_400_BAD_REQUEST
 
         elif exception_name == 'KeyNotFound':
             response = {
-                'msg': f"The keys don't exist - {parameters}"
+                "success": f"False",
+                "error": f"Bad Request",
+                "code": 400,
+                "detail": f"Some keys don't exist."
             }
-            status_code = status.HTTP_404_NOT_FOUND
+            status_code = status.HTTP_400_BAD_REQUEST
 
         elif exception_name == 'InvalidKey':
             response = {
-                'msg': f"Invalid key in url - {parameters}"
+                "success": f"False",
+                "error": f"Bad Request",
+                "code": 400,
+                "detail": f"Invalid key name in url."
             }
-            status_code = status.HTTP_404_NOT_FOUND
+            status_code = status.HTTP_400_BAD_REQUEST
 
         elif exception_name == 'DuplicateKey':
             response = {
-                'msg': f"Can not perform post request. Duplicate keys found - {parameters}"
+                "success": f"False",
+                "error": f"Conflict",
+                "code": 409,
+                "detail": f"Can not create new resource - already exist."
             }
             status_code = status.HTTP_409_CONFLICT
 
