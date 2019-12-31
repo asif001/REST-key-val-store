@@ -35,29 +35,44 @@ In this project a REST API has been developed. The target of the API is to store
 ## Linux
 *  Install and configure Redis for Linux following - https://redis.io/topics/quickstart
 * Clone the project
--      git clone https://github.com/asif001/REST-key-val-store.git
+```
+git clone https://github.com/asif001/REST-key-val-store.git
+```
 *	Change directory to REST-key-val-store
 *  Create environment for python-3.7.5
 *  Activate the environment
 *  Install required packages in the environment  
--               pip install -r requirements.txt
+```               
+pip install -r requirements.txt
+```
 *  Run migration
--      python manage.py makemigrations && python manage.py migrate
+```
+python manage.py makemigrations && python manage.py migrate
+```
 *   Start the server
--                  python manage.py runserver 
+```
+python manage.py runserver
+``` 
 
 #   Instructions
 *   POST
--           URL: https://127.0.0.1:8000/api/values
-            #Format: {key1:val1, key2:val2, key3:val3, ...}
+```
+URL: https://127.0.0.1:8000/api/values
+#Format: {key1:val1, key2:val2, key3:val3, ...}
+```
 *   GET
--           #Fetch all values           
-            URL: https://127.0.0.1:8000/api/values
-            #Fetch specific key values
-            URL: https://127.0.0.1:8000/api/values?keys=key1,key2,key3,..
+```
+#Fetch all values           
+URL: https://127.0.0.1:8000/api/values
+#Fetch specific key values
+URL: https://127.0.0.1:8000/api/values?keys=key1,key2,key3,..
+```
+
 *   PATCH
--           URL: https://127.0.0.1:8000/api/values
-            #Format: {key1:val1, key2:val2, key3:val3, ...}
+```
+URL: https://127.0.0.1:8000/api/values
+#Format: {key1:val1, key2:val2, key3:val3, ...}
+```
 
 ## Contributing
 The main reason to publish something open source, is that anyone can just jump in and start contributing to my project.
