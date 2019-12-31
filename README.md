@@ -46,7 +46,7 @@ In this project a REST API has been developed. The target of the API is to store
 *   Start the server
 *                  python manage.py runserver 
 
-##Instructions
+#Instructions
 *   POST
 *           URL: https://127.0.0.1:8000/api/values
             #Format: {key1:val1, key2:val2, key3:val3, ...}
