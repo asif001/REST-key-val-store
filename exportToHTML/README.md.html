@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #a9b7c6;}
+.s3 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+README.md</font>
+</center></td></tr></table>
+<pre><span class="s0"># </span><span class="s2">REST key-val Store</span>
+
+
+<span class="s0">## </span><span class="s2">Python Package Dependencies</span>
+<span class="s0">1. </span><span class="s2">Django</span>
+<span class="s0">2. </span><span class="s2">djangorestframework</span>
+<span class="s0">3. </span><span class="s2">msgpack</span>
+<span class="s0">4. </span><span class="s2">django-redis</span>
+<span class="s0">5. </span><span class="s2">redis </span>
+
+
+<span class="s0">## </span><span class="s2">Introduction</span>
+<span class="s2">In this project a REST API has been developed. The target of the API is to store, fetch and update arbitrary length key</span><span class="s1">:</span><span class="s2">value. </span>
+
+
+<span class="s0">## </span><span class="s2">Features</span>
+<span class="s0">* </span><span class="s2">Store arbitrary length key-val</span>
+<span class="s0">* </span><span class="s2">Every key has default TTL 5 min. After 5 miniutes the store key is automatically deleted</span>
+<span class="s0">* </span><span class="s2">On every GET or PATCH request, the corresponding keys' TTL is reset to default  </span>
+
+
+<span class="s0"># </span><span class="s2">Quick start running the project</span>
+<span class="s0">## </span><span class="s2">Docker</span>
+<span class="s0">1.  </span><span class="s2">Install and configure Docker for your system - </span><span class="s1">https://docs.docker.com/install/</span>
+<span class="s0">2. </span><span class="s3">`</span><span class="s2">git clone </span><span class="s1">https://github.com/asif001/REST-key-val-store.git</span><span class="s3">`</span>
+<span class="s0">3.  </span><span class="s2">cd to REST-key-val-store project directory </span>
+<span class="s0">4.  </span><span class="s2">Launch CLI</span>
+<span class="s0">5.  </span><span class="s2">Run </span><span class="s3">`</span><span class="s2">docker-compose up</span><span class="s3">` </span><span class="s2">or </span><span class="s3">`</span><span class="s2">docker-compose up -d</span><span class="s3">` </span><span class="s1">(</span><span class="s2">-d for running in detached mode</span><span class="s1">)</span>
+<span class="s0">6.  </span><span class="s2">To see the logs run </span><span class="s3">`</span><span class="s2">docker logs </span><span class="s1">&lt;</span><span class="s2">container_name</span><span class="s1">&gt; </span><span class="s2">-f</span><span class="s3">`</span>
+<span class="s0">7.  </span><span class="s2">The service is running at </span><span class="s1">https://127.0.0.1:8000/api/values </span><span class="s2">at host machine</span>
+<span class="s0">8.  </span><span class="s2">Send POST, GET or PATCH request </span><span class="s1">(</span><span class="s2">Instructions below</span><span class="s1">) </span><span class="s2">at </span><span class="s1">https://127.0.0.1:8000/api/values </span><span class="s2">to see the REST API in action</span>
+
+<span class="s0">## </span><span class="s2">Linux</span>
+<span class="s0">1.  </span><span class="s2">Install and configure Redis for Linux following - </span><span class="s1">https://redis.io/topics/quickstart</span>
+<span class="s0">2. </span><span class="s3">`</span><span class="s2">git clone </span><span class="s1">https://github.com/asif001/REST-key-val-store.git</span><span class="s3">`</span>
+<span class="s0">3.  </span><span class="s2">cd to REST-key-val-store project directory</span>
+<span class="s0">4.  </span><span class="s2">Create environment for python-3.7.5</span>
+<span class="s0">5.  </span><span class="s2">activate the environment</span>
+<span class="s0">6.  </span><span class="s2">Install required packages in the environment </span><span class="s3">`</span><span class="s2">pip install -r requirements.txt</span><span class="s3">`  </span>
+<span class="s2">7.-k  ,hkj</span>
+
+<span class="s0">## </span><span class="s2">Contributing</span>
+<span class="s2">The main reason to publish something open source, is that anyone can just jump in and start contributing to my project.</span>
+<span class="s2">So If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.</span>
+
+
+<span class="s0">## </span><span class="s2">Author</span>
+<span class="s2">Asifur Rahman</span>
+<span class="s2">asifurarahman@gmail.com</span>
+<span class="s2">Student at Department of Computer Science and Engineering</span>
+<span class="s2">Khulna University of Engineering &amp; Technology, Khulna</span>
+<span class="s2">Bangladesh</span></pre>
+</body>
+</html>

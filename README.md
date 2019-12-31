@@ -15,21 +15,49 @@ In this project a REST API has been developed. The target of the API is to store
 
 ## Features
 * Store arbitrary length key-val
-* Every key has default TTL 5 min. After 5 miniutes the store key is automatically deleted
+* Every key has default TTL 5 min. After 5 minutes the store key is automatically deleted
 * On every GET or PATCH request, the corresponding keys' TTL is reset to default  
 
 
 # Quick start running the project
-## Via Docker
-1.	Install and configure Docker for your system - https://docs.docker.com/install/
-2. `git clone https://github.com/asif001/REST-key-val-store.git`
-2.	cd to REST-key-val-store project directory 
-3. 	Launch CLI
-4.	Run `docker-compose up` or `docker-compose up -d` (-d for running in detached mode)
-5.	To see the logs run `docker logs <container_name> -f`
-6.	The service is running at https://127.0.0.1:8000/api/values at host machine
-7.	Send POST, GET or PATCH request (Instructions below) at https://127.0.0.1:8000/api/values to see the REST API in action
+## Docker
+*	Install and configure Docker for your system - https://docs.docker.com/install/
+*       git clone https://github.com/asif001/REST-key-val-store.git
+*	Change directory to REST-key-val-store 
+* 	Launch CLI
+*	Run the docker services 
+*                   docker-compose up -d
+*	See the logs 
+*               docker logs <container_name> -f
+7.	Service is running at https://127.0.0.1:8000/api/values at host machine
+8.	Send POST, GET or PATCH request (Instructions below) at https://127.0.0.1:8000/api/values to see the REST API in action
 
+## Linux
+*  Install and configure Redis for Linux following - https://redis.io/topics/quickstart
+* Clone the project
+*      git clone https://github.com/asif001/REST-key-val-store.git
+*	Change directory to REST-key-val-store
+*  Create environment for python-3.7.5
+*  Activate the environment
+*  Install required packages in the environment  
+*               pip install -r requirements.txt
+*  Run migration
+*      python manage.py makemigrations && python manage.py migrate
+*   Start the server
+*                  python manage.py runserver 
+
+##Instructions
+*   POST
+*           URL: https://127.0.0.1:8000/api/values
+            #Format: {key1:val1, key2:val2, key3:val3, ...}
+*   GET
+*           #Fetch all values           
+            URL: https://127.0.0.1:8000/api/values
+            #Fetch specific key values
+            URL: https://127.0.0.1:8000/api/values?keys=key1,key2,key3,..
+*   PATCH
+*           URL: https://127.0.0.1:8000/api/values
+            #Format: {key1:val1, key2:val2, key3:val3, ...}
 
 ## Contributing
 The main reason to publish something open source, is that anyone can just jump in and start contributing to my project.
