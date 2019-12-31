@@ -22,15 +22,22 @@ In this project a REST API has been developed. The target of the API is to store
 # Quick start running the project
 ## Docker
 *	Install and configure Docker for your system - https://docs.docker.com/install/
-*       git clone https://github.com/asif001/REST-key-val-store.git
+* Clone the project
+```
+git clone https://github.com/asif001/REST-key-val-store.git
+```
 *	Change directory to REST-key-val-store 
 * 	Launch CLI
 *	Run the docker services 
-*                   docker-compose up -d
+```
+docker-compose up -d
+```
 *	See the logs 
-*               docker logs <container_name> -f
-7.	Service is running at https://127.0.0.1:8000/api/values at host machine
-8.	Send POST, GET or PATCH request (Instructions below) at https://127.0.0.1:8000/api/values to see the REST API in action
+```
+docker logs <container_name> -f
+```
+*	Service is running at https://127.0.0.1:8000/api/values at host machine
+*	Send POST, GET or PATCH request (Instructions below) at https://127.0.0.1:8000/api/values to see the REST API in action
 
 ## Linux
 *  Install and configure Redis for Linux following - https://redis.io/topics/quickstart
