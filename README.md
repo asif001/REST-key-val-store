@@ -81,6 +81,14 @@ URL: https://127.0.0.1:8000/api/values
 #Format: {key1:val1, key2:val2, key3:val3, ...}
 ```
 
+##  Performance
+Performance has been tested using [APACHE JMeter](https://jmeter.apache.org/)
+*   [Test Data](dict.txt)
+*   Thread Group
+![Test Group](images/testgroup.PNG)
+*   Result
+![Result - GET/POST](images/results.PNG)
+
 ## Contributing
 The main reason to publish something open source, is that anyone can just jump in and start contributing to my project.
 So If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
