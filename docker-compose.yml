@@ -7,7 +7,7 @@ services:
         - 6379
   web:
     build:  .
-    image: asifadocker/telenortest
+    image: asifarahman/telenorapi
     volumes:
         - .:/code
     ports:
